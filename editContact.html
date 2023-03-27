@@ -6,16 +6,15 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Contact</title>
-    <script src="js/editContact.js"></script>
+    <script src="js/code.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
 
-<body style="min-height: 100vh; margin: 0; display: flex; justify-content: center; align-items: center;">
+<body style="min-height: 100vh; margin: 0; display: flex; justify-content: center; align-items: center" onload=info();>
     <div class="mx-auto" style="width: 35em; max-width: 90%;">
         <div class="brand animate__animated animate__fadeIn">
             <img src="images/icons8-contacts-100.png" alt="phonebook-icon" class="p-2 m-auto d-block"></img>
@@ -33,7 +32,7 @@
                             <use xlink:href="#userIcon"></use>
                         </svg>
                     </label>
-                    <input type="text" class="form-control" id="firstName" placeholder="First name" required>
+                    <input type="text" class="form-control" id="firstName" value= "" required> 
                 </div>
                 <div class="d-flex col-md-6">
                     <label class="input-group-text" for="lastName">
@@ -41,7 +40,7 @@
                             <use xlink:href="#userIcon"></use>
                         </svg>
                     </label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Last name" required>
+                    <input type="text" class="form-control" id="lastName" value= "" required>
                 </div>
                 <div class="d-flex">
                     <label class="input-group-text" for="phonenumber">
@@ -49,7 +48,7 @@
                             <use xlink:href="#userPhone"></use>
                         </svg>
                     </label>
-                    <input type="text" id="phonenumber" class="form-control" placeholder="Phone Number" required>
+                    <input type="text" id="phonenumber" class="form-control" value= "" required>
                 </div>
                 <div class="d-flex">
                     <label class="input-group-text" for="Email">
@@ -57,14 +56,14 @@
                             <use xlink:href="#userEmail"></use>
                         </svg>
                     </label>
-                    <input type="Email" id="Email" class="form-control" placeholder="Email"
+                    <input type="Email" id="Email" class="form-control" value= ""
                         required>
                 </div>
                 <span id="formCorrection"></span>
                 <div class="d-grid gap-3">
                     <button type="button" class="btn btn-outline-primary" onclick="verifyRegistration()">Finish Editing Contact</button>
                     <p class="text-center">
-                        <a href="contacts.html">Click to Go Back To Contact Manager</a>
+                        <a href="modal.html">Click to Go Back To Contact Manager</a>
                     </p>
                 </div>
             </form>
@@ -91,5 +90,35 @@
     </svg>
 
 </body>
+
+<script>
+
+// when entered key is pressed submit form
+document.addEventListener('keyup', function (event) {
+    if (event.code === 'Enter') {
+        verifyRegistration();
+    }
+});
+
+function verifyRegistration() {
+    let fname = document.getElementById("firstName");
+    let lname = document.getElementById("lastName");
+    let phoneNumber = document.getElementById("phonenumber");
+    let email = document.getElementById("Email");
+
+    // checks that all fields were filled out
+    if ((fname.value == "") || (lname.value == "") || (phoneNumber.value == "") || 
+        (email.value == "")) {
+        document.getElementById("formCorrection").innerHTML = "All fields required*";
+        document.getElementById("formCorrection").style.color = 'red';
+    } else {
+	editContact();
+    }
+
+}
+
+		
+
+</script>
 
 </html>

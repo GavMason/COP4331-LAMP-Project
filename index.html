@@ -1,14 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <script src="js/code.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
-<body>
-  <h1>Hello World!</h1>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+
+<body style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <div class="mx-auto" style="width: 35em; max-width: 90%;">
+        <div class="m-1 brand animate__animated animate__fadeInDown">
+            <img src="images/icons8-contacts-100.png" alt="phonebook-icon" class="p-2 m-auto d-block"></img>
+        </div>
+        <div class="p-4 animate__animated animate__fadeIn animate__delay-1s rounded-3" style="box-shadow: 2px 6px 12px lightblue;">
+            <div class="pb-4">
+                <h2 class="text-center">Welcome!</h2>
+                <h5 class="text-center fw-lighter">Please enter your username and password</h5>
+            </div>
+            <form class="row g-3" method="post" name="login">
+                <div class="d-flex">
+                    <label class="input-group-text" for="username">
+                        <svg style="height: 1em; width: 1em">
+                            <use xlink:href="#userIcon"></use>
+                        </svg>
+                    </label>
+                    <input id="username" type="text" class="form-control" placeholder="Username" required="">
+                </div>
+                <div class="d-flex">
+                    <label class="input-group-text" for="password">
+                        <svg style="height: 1em; width: 1em;">
+                            <use xlink:href="#userPass"></use>
+                        </svg>
+                    </label>
+                    <input id="password" type="password" class="form-control" placeholder="Password" required="">
+                </div>
+                <div class="d-grid gap-3">
+                    <span id="missingInfo"></span>
+                    <button type="button" class="btn btn-outline-primary" onclick="verifyLogin()">Log In</button> 
+				
+                    <p class="text-center">
+                        First time here?
+                        <a href="register.html">Click here to register</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="userIcon">
+            <path
+                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+        </symbol>
+        <symbol id="userPass">
+            <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+        </symbol>
+    </svg>
+
 </body>
+
+
+
+
+
+<script>
+
+	
+
+
+function verifyLogin() {
+   	let fname = document.getElementById("username");
+    	let lname = document.getElementById("password");
+
+    if ((fname.value == "") || (lname.value == "")) {
+        document.getElementById("missingInfo").innerHTML = "All fields required*";
+        document.getElementById("missingInfo").style.color = 'red';
+        return;
+    } else {
+    login();
+    }//end else
+
+
+}
+	
+
+</script>
+
 </html>
